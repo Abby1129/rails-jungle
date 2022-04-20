@@ -29,7 +29,18 @@
           <%= link_to 'About Us', :about_index %>
         </li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
+         <% if current_user %>
+        <li>
+          <a href="#"> Signed in as <%= current_user.first_name %> <%= current_user.last_name %></a>
+        </li>   
+        <li><%= link_to "Logout", '/logout'%></li>
+        <% else %>
+        <li><%= link_to "Sign Up", '/signup' %></li>
+        <li><%= link_to "Login", '/login' %></li> 
+        <% yield %>
+      <% end %>
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
